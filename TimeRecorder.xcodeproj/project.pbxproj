@@ -7,10 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D02CDC0C1A86CCD4000B2FE1 /* InputTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02CDC0B1A86CCD4000B2FE1 /* InputTimeViewController.swift */; };
+		D02CDC0E1A8789BE000B2FE1 /* DatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D02CDC0D1A8789BE000B2FE1 /* DatePickerViewController.xib */; };
+		D02CDC101A8A4E27000B2FE1 /* InputDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02CDC0F1A8A4E27000B2FE1 /* InputDateViewController.swift */; };
+		D04794CE1A7C8B0400B6315C /* TimeRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04794CD1A7C8B0400B6315C /* TimeRecord.swift */; };
+		D04794D01A7D955A00B6315C /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04794CF1A7D955A00B6315C /* Log.swift */; };
+		D0AB759B1A841D860070FC29 /* DateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AB759A1A841D860070FC29 /* DateUtil.swift */; };
 		D0F29B201A7A758C0043CF29 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F29B1F1A7A758C0043CF29 /* AppDelegate.swift */; };
 		D0F29B231A7A758C0043CF29 /* TimeRecorder.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D0F29B211A7A758C0043CF29 /* TimeRecorder.xcdatamodeld */; };
-		D0F29B251A7A758C0043CF29 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F29B241A7A758C0043CF29 /* MasterViewController.swift */; };
-		D0F29B271A7A758C0043CF29 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F29B261A7A758C0043CF29 /* DetailViewController.swift */; };
+		D0F29B251A7A758C0043CF29 /* RecordListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F29B241A7A758C0043CF29 /* RecordListViewController.swift */; };
+		D0F29B271A7A758C0043CF29 /* RecordDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F29B261A7A758C0043CF29 /* RecordDetailViewController.swift */; };
 		D0F29B2A1A7A758C0043CF29 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0F29B281A7A758C0043CF29 /* Main.storyboard */; };
 		D0F29B2C1A7A758C0043CF29 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0F29B2B1A7A758C0043CF29 /* Images.xcassets */; };
 		D0F29B2F1A7A758C0043CF29 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0F29B2D1A7A758C0043CF29 /* LaunchScreen.xib */; };
@@ -28,12 +34,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D02CDC0B1A86CCD4000B2FE1 /* InputTimeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputTimeViewController.swift; sourceTree = "<group>"; };
+		D02CDC0D1A8789BE000B2FE1 /* DatePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DatePickerViewController.xib; sourceTree = "<group>"; };
+		D02CDC0F1A8A4E27000B2FE1 /* InputDateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputDateViewController.swift; sourceTree = "<group>"; };
+		D04794CD1A7C8B0400B6315C /* TimeRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeRecord.swift; path = ../TimeRecord.swift; sourceTree = "<group>"; };
+		D04794CF1A7D955A00B6315C /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
+		D0AB759A1A841D860070FC29 /* DateUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateUtil.swift; sourceTree = "<group>"; };
 		D0F29B1A1A7A758C0043CF29 /* TimeRecorder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeRecorder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0F29B1E1A7A758C0043CF29 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D0F29B1F1A7A758C0043CF29 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0F29B221A7A758C0043CF29 /* TimeRecorder.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TimeRecorder.xcdatamodel; sourceTree = "<group>"; };
-		D0F29B241A7A758C0043CF29 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
-		D0F29B261A7A758C0043CF29 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		D0F29B241A7A758C0043CF29 /* RecordListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordListViewController.swift; sourceTree = "<group>"; };
+		D0F29B261A7A758C0043CF29 /* RecordDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordDetailViewController.swift; sourceTree = "<group>"; };
 		D0F29B291A7A758C0043CF29 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D0F29B2B1A7A758C0043CF29 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D0F29B2E1A7A758C0043CF29 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -82,9 +94,15 @@
 			isa = PBXGroup;
 			children = (
 				D0F29B1F1A7A758C0043CF29 /* AppDelegate.swift */,
-				D0F29B241A7A758C0043CF29 /* MasterViewController.swift */,
-				D0F29B261A7A758C0043CF29 /* DetailViewController.swift */,
+				D0F29B241A7A758C0043CF29 /* RecordListViewController.swift */,
+				D0F29B261A7A758C0043CF29 /* RecordDetailViewController.swift */,
+				D02CDC0B1A86CCD4000B2FE1 /* InputTimeViewController.swift */,
+				D02CDC0F1A8A4E27000B2FE1 /* InputDateViewController.swift */,
+				D04794CD1A7C8B0400B6315C /* TimeRecord.swift */,
+				D0AB759A1A841D860070FC29 /* DateUtil.swift */,
+				D04794CF1A7D955A00B6315C /* Log.swift */,
 				D0F29B281A7A758C0043CF29 /* Main.storyboard */,
+				D02CDC0D1A8789BE000B2FE1 /* DatePickerViewController.xib */,
 				D0F29B2B1A7A758C0043CF29 /* Images.xcassets */,
 				D0F29B2D1A7A758C0043CF29 /* LaunchScreen.xib */,
 				D0F29B211A7A758C0043CF29 /* TimeRecorder.xcdatamodeld */,
@@ -167,6 +185,7 @@
 				TargetAttributes = {
 					D0F29B191A7A758C0043CF29 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = 5Q7YHJUK8E;
 					};
 					D0F29B331A7A758C0043CF29 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -198,6 +217,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D02CDC0E1A8789BE000B2FE1 /* DatePickerViewController.xib in Resources */,
 				D0F29B2A1A7A758C0043CF29 /* Main.storyboard in Resources */,
 				D0F29B2F1A7A758C0043CF29 /* LaunchScreen.xib in Resources */,
 				D0F29B2C1A7A758C0043CF29 /* Images.xcassets in Resources */,
@@ -218,10 +238,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D02CDC0C1A86CCD4000B2FE1 /* InputTimeViewController.swift in Sources */,
 				D0F29B231A7A758C0043CF29 /* TimeRecorder.xcdatamodeld in Sources */,
+				D04794D01A7D955A00B6315C /* Log.swift in Sources */,
+				D04794CE1A7C8B0400B6315C /* TimeRecord.swift in Sources */,
 				D0F29B201A7A758C0043CF29 /* AppDelegate.swift in Sources */,
-				D0F29B251A7A758C0043CF29 /* MasterViewController.swift in Sources */,
-				D0F29B271A7A758C0043CF29 /* DetailViewController.swift in Sources */,
+				D0F29B251A7A758C0043CF29 /* RecordListViewController.swift in Sources */,
+				D0F29B271A7A758C0043CF29 /* RecordDetailViewController.swift in Sources */,
+				D02CDC101A8A4E27000B2FE1 /* InputDateViewController.swift in Sources */,
+				D0AB759B1A841D860070FC29 /* DateUtil.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,6 +438,7 @@
 				D0F29B401A7A758C0043CF29 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D0F29B411A7A758C0043CF29 /* Build configuration list for PBXNativeTarget "TimeRecorderTests" */ = {
 			isa = XCConfigurationList;
@@ -421,6 +447,7 @@
 				D0F29B431A7A758C0043CF29 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
