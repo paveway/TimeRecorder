@@ -43,12 +43,8 @@ class RecordListViewController: UITableViewController, NSFetchedResultsControlle
         // スーパークラスのメソッドを呼び出す。
         super.viewDidLoad()
     
-        // 左上に編集ボタンを設定する。
+        // 左上に削除ボタンを設定する。
         self.navigationItem.leftBarButtonItem = self.editButtonItem()
-
-        // 右上に追加ボタンを設定する。
-        //let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "insertNewObject:")
-        //self.navigationItem.rightBarButtonItem = addButton
         
         Log.d("OUT(OK)")
     }
@@ -64,102 +60,7 @@ class RecordListViewController: UITableViewController, NSFetchedResultsControlle
         
         Log.d("OUT(OK)")
     }
-
-    /**
-    当日の日付文字列を返却する。
-
-    :return: 当日の日付文字列
-    */
-    func getToday() -> String {
-        Log.d("IN")
-        
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.locale = NSLocale(localeIdentifier: "ja_JP")
-        dateFormatter.dateFormat = "yyyy/MM/dd"
-        let result = dateFormatter.stringFromDate(NSDate())
-        
-        Log.d("OUT(OK) result=[\(result)]")
-        return result
-    }
     
-    /**
-    当日が存在するかチェックする。
-    
-    :return: true 当日が存在する / false 存在しない
-    */
-    func isExistToday() -> Bool {
-        Log.d("IN")
-        
-        let today = getToday()
-        
-        let context = self.fetchedResultsController.managedObjectContext
-        let fetchRequest = NSFetchRequest()
-        fetchRequest.entity = self.fetchedResultsController.fetchRequest.entity!
-        //let now = NSDate()
-        //let day = DateUtil.date(DateUtil.year(now), month:DateUtil.month(now), day:DateUtil.day(now))
-        let predicate = NSPredicate(format: "recordDate='\(today)'")
-        fetchRequest.predicate = predicate
-        
-        var result = false
-        if var results = context.executeFetchRequest(fetchRequest, error: nil) {
-            if results.count == 1 {
-                result = true
-            }
-        }
-        
-        Log.d("OUT(OK)")
-        return result
-    }
-    
-    /**
-    新しいオブジェクトを新規挿入する。
-
-    :param: sender
-    */
-    func insertNewObject(sender: AnyObject) {
-        Log.d("IN")
-        
-        let vc: InputDateViewController = InputDateViewController()
-        //let vc: RecordInputViewController = RecordInputViewController()
-        self.navigationController?.pushViewController(vc, animated: true)
-/*
-        // 存在しない日の場合
-        if !isExistToday() {
-            // コンテキストを取得する。
-            let context = self.fetchedResultsController.managedObjectContext
-            
-            // エンティティを取得する。
-            let entity = self.fetchedResultsController.fetchRequest.entity!
-            
-            // 新規タイムレコードオブジェクトを取得する。
-            let timeRecord = NSEntityDescription.insertNewObjectForEntityForName(entity.name!, inManagedObjectContext: context) as NSManagedObject
-
-            // タイムレコードオブジェクトにデータを設定する。
-            let today = getToday()
-            timeRecord.setValue(today, forKey: "recordDate")
-            timeRecord.setValue("", forKey: "enterTime")
-            timeRecord.setValue("", forKey: "exitTime")
-            
-            // データを新規登録する。
-            var error: NSError? = nil
-            if !context.save(&error) {
-                Log.w("save() error.")
-                abort()
-            }
-        }
-*/
-        
-        Log.d("OUT(OK)")
-    }
-    
-    func showAlert() {
-        let alertController = UIAlertController(title: "結果", message: "", preferredStyle: UIAlertControllerStyle.Alert)
-        //let alertController = UIAlertController(nibName: "DatePickerViewController", bundle: nil)
-        let okAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
-        alertController.addAction(okAction)
-        self.presentViewController(alertController, animated: true, completion: nil)
-    }
-
     // MARK: - Segues
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -171,9 +72,19 @@ class RecordListViewController: UITableViewController, NSFetchedResultsControlle
                 let timeRecord = self.fetchedResultsController.objectAtIndexPath(indexPath) as TimeRecord
                 (segue.destinationViewController as RecordDetailViewController).timeRecord = timeRecord
             }
+        
+        // 日付入力画面の場合
         } else if segue.identifier == "showInputDate" {
+            (segue.destinationViewController as InputDateViewController).managedObjectContext = managedObjectContext
             
+        // 日付編集画面の場合
         } else if segue.identifier == "showEditDate" {
+            let indexPath = self.tableView.indexPathForSelectedRow()
+            if indexPath != nil {
+                Log.d("indexPath.row=[\(indexPath!.row)]")
+                let timeRecord = self.fetchedResultsController.objectAtIndexPath(indexPath!) as TimeRecord
+                (segue.destinationViewController as EditDateViewController).timeRecord = timeRecord
+            }
             
         }
         
@@ -190,8 +101,11 @@ class RecordListViewController: UITableViewController, NSFetchedResultsControlle
     */
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         Log.d("IN")
-        Log.d("OUT(OK)")
-        return self.fetchedResultsController.sections?.count ?? 0
+        
+        let result = self.fetchedResultsController.sections?.count ?? 0
+        
+        Log.d("OUT(OK) result=[\(result)]")
+        return result
     }
 
     /**
@@ -206,8 +120,9 @@ class RecordListViewController: UITableViewController, NSFetchedResultsControlle
         
         let sectionInfo = self.fetchedResultsController.sections![section] as NSFetchedResultsSectionInfo
         
-        Log.d("OUT(OK)")
-        return sectionInfo.numberOfObjects
+        let result = sectionInfo.numberOfObjects
+        Log.d("OUT(OK) result=[\(result)]")
+        return result
     }
 
     /**
@@ -287,7 +202,7 @@ class RecordListViewController: UITableViewController, NSFetchedResultsControlle
         fetchRequest.fetchBatchSize = 20
         
         // Edit the sort key as appropriate.
-        let sortDescriptor = NSSortDescriptor(key: "recordDate", ascending: false)
+        let sortDescriptor = NSSortDescriptor(key: "recordDate", ascending: true)
         let sortDescriptors = [sortDescriptor]
         
         fetchRequest.sortDescriptors = [sortDescriptor]

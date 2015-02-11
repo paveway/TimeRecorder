@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>AE2BBCF7-BA83-4B6F-B049-640B4DF4E052</string>
+	<key>IDESourceControlProjectName</key>
+	<string>TimeRecorder</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>C19272814D1B30FA6358269C791120A3E55B5B6B</key>
+		<string>https://github.com/paveway/TimeRecorder.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>TimeRecorder.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>C19272814D1B30FA6358269C791120A3E55B5B6B</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/paveway/TimeRecorder.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>C19272814D1B30FA6358269C791120A3E55B5B6B</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>C19272814D1B30FA6358269C791120A3E55B5B6B</string>
+			<key>IDESourceControlWCCName</key>
+			<string>TimeRecorder</string>
+		</dict>
+	</array>
+</dict>
+</plist>

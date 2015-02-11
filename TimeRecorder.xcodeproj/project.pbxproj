@@ -10,6 +10,7 @@
 		D02CDC0C1A86CCD4000B2FE1 /* InputTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02CDC0B1A86CCD4000B2FE1 /* InputTimeViewController.swift */; };
 		D02CDC0E1A8789BE000B2FE1 /* DatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D02CDC0D1A8789BE000B2FE1 /* DatePickerViewController.xib */; };
 		D02CDC101A8A4E27000B2FE1 /* InputDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02CDC0F1A8A4E27000B2FE1 /* InputDateViewController.swift */; };
+		D02CDC121A8B4E33000B2FE1 /* EditDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02CDC111A8B4E33000B2FE1 /* EditDateViewController.swift */; };
 		D04794CE1A7C8B0400B6315C /* TimeRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04794CD1A7C8B0400B6315C /* TimeRecord.swift */; };
 		D04794D01A7D955A00B6315C /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04794CF1A7D955A00B6315C /* Log.swift */; };
 		D0AB759B1A841D860070FC29 /* DateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AB759A1A841D860070FC29 /* DateUtil.swift */; };
@@ -37,6 +38,7 @@
 		D02CDC0B1A86CCD4000B2FE1 /* InputTimeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputTimeViewController.swift; sourceTree = "<group>"; };
 		D02CDC0D1A8789BE000B2FE1 /* DatePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DatePickerViewController.xib; sourceTree = "<group>"; };
 		D02CDC0F1A8A4E27000B2FE1 /* InputDateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputDateViewController.swift; sourceTree = "<group>"; };
+		D02CDC111A8B4E33000B2FE1 /* EditDateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditDateViewController.swift; sourceTree = "<group>"; };
 		D04794CD1A7C8B0400B6315C /* TimeRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeRecord.swift; path = ../TimeRecord.swift; sourceTree = "<group>"; };
 		D04794CF1A7D955A00B6315C /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		D0AB759A1A841D860070FC29 /* DateUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateUtil.swift; sourceTree = "<group>"; };
@@ -95,9 +97,10 @@
 			children = (
 				D0F29B1F1A7A758C0043CF29 /* AppDelegate.swift */,
 				D0F29B241A7A758C0043CF29 /* RecordListViewController.swift */,
+				D02CDC0F1A8A4E27000B2FE1 /* InputDateViewController.swift */,
+				D02CDC111A8B4E33000B2FE1 /* EditDateViewController.swift */,
 				D0F29B261A7A758C0043CF29 /* RecordDetailViewController.swift */,
 				D02CDC0B1A86CCD4000B2FE1 /* InputTimeViewController.swift */,
-				D02CDC0F1A8A4E27000B2FE1 /* InputDateViewController.swift */,
 				D04794CD1A7C8B0400B6315C /* TimeRecord.swift */,
 				D0AB759A1A841D860070FC29 /* DateUtil.swift */,
 				D04794CF1A7D955A00B6315C /* Log.swift */,
@@ -244,6 +247,7 @@
 				D04794CE1A7C8B0400B6315C /* TimeRecord.swift in Sources */,
 				D0F29B201A7A758C0043CF29 /* AppDelegate.swift in Sources */,
 				D0F29B251A7A758C0043CF29 /* RecordListViewController.swift in Sources */,
+				D02CDC121A8B4E33000B2FE1 /* EditDateViewController.swift in Sources */,
 				D0F29B271A7A758C0043CF29 /* RecordDetailViewController.swift in Sources */,
 				D02CDC101A8A4E27000B2FE1 /* InputDateViewController.swift in Sources */,
 				D0AB759B1A841D860070FC29 /* DateUtil.swift in Sources */,

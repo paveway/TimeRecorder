@@ -20,8 +20,12 @@ import CoreData
 @objc(TimeRecord)
 class TimeRecord: NSManagedObject {
 
+    /** 記録年月日 */
     @NSManaged var recordDate: String
+    
+    /** 出勤時間 */
     @NSManaged var enterTime: String
+    
+    /** 退勤時間 */
     @NSManaged var exitTime: String
-
 }

@@ -25,18 +25,6 @@ class RecordDetailViewController: UITableViewController {
     var timeRecord: TimeRecord?
 
     /**
-    ビューの設定を行う。
-    */
-    func configureView() {
-        Log.d("IN")
-        
-        if let detail: TimeRecord = self.timeRecord {
-        }
-        
-        Log.d("OUT(OUT)")
-    }
-
-    /**
     ビューがロードされた時に呼び出される。
     */
     override func viewDidLoad() {
@@ -44,8 +32,6 @@ class RecordDetailViewController: UITableViewController {
       
         // スーパークラスのメソッドを呼び出す。
         super.viewDidLoad()
-        
-        self.configureView()
         
         Log.d("OUT(OUT)")
     }
@@ -62,6 +48,65 @@ class RecordDetailViewController: UITableViewController {
         Log.d("OUT(OUT)")
     }
     
+    /**
+    ビューが表示される前に呼びだされる。
+
+    :param: animated アニメーション
+    */
+    override func viewWillAppear(animated: Bool) {
+        Log.d("IN")
+        
+        // スーパークラスのメソッドを呼び出す。
+        super.viewWillAppear(animated)
+        
+        // テーブルビューのデータをリロードする。
+        self.tableView.reloadData()
+        
+        Log.d("OUT(OK)")
+    }
+    
+    /**
+    ビューが表示された後に呼びだされる。
+    
+    :param: animated アニメーション
+    */
+    override func viewDidAppear(animated: Bool) {
+        Log.d("IN")
+        
+        // スーパークラスのメソッドを呼び出す。
+        super.viewDidAppear(animated)
+        
+        Log.d("OUT(OK)")
+    }
+    
+    /**
+    ビューが非表示になる前に呼びだされる。
+    
+    :param: animated アニメーション
+    */
+    override func viewWillDisappear(animated: Bool) {
+        Log.d("IN")
+        
+        // スーパークラスのメソッドを呼び出す。
+        super.viewWillDisappear(animated)
+        
+        Log.d("OUT(OK)")
+    }
+    
+    /**
+    ビューが非表示になった後に呼びだされる。
+    
+    :param: animated アニメーション
+    */
+    override func viewDidDisappear(animated: Bool) {
+        Log.d("IN")
+        
+        // スーパークラスのメソッドを呼び出す。
+        super.viewDidDisappear(animated)
+        
+        Log.d("OUT(OK)")
+    }
+    
     // MARK: - Segues
     
     /**
@@ -73,11 +118,14 @@ class RecordDetailViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         Log.d("IN segue.identifier=[\(segue.identifier)]")
         
-        // 入力画面の場合
-        if segue.identifier == "showRecordInput" {
+        // 時間入力画面の場合
+        if segue.identifier == "showInputTime" {
+            // 選択された行のインデックスパスを取得する。
             if let indexPath = self.tableView.indexPathForSelectedRow() {
-                (segue.destinationViewController as InputTimeViewController).timeRecord = timeRecord
-                (segue.destinationViewController as InputTimeViewController).timeType = indexPath.row
+                // 遷移先画面に引き継ぎデータを設定する。
+                let vc = segue.destinationViewController as InputTimeViewController
+                vc.timeRecord = timeRecord
+                vc.timeType = indexPath.row
             }
         }
         
@@ -111,19 +159,32 @@ class RecordDetailViewController: UITableViewController {
         // セルを取得する。
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
         
-        // ラベル
+        // セルのラベルをラベル名を設定する。
         cell.textLabel?.text = labels[indexPath.row]
+        
+        // 0行目の場合
         if indexPath.row == 0 {
+            // 出勤時間が入力済みの場合
             if timeRecord?.enterTime != "" {
+                // セルの詳細ラベルに出勤時間を設定する。
                 cell.detailTextLabel?.text = timeRecord?.enterTime
+                
+            // 出勤時間が未入力の場合
             } else {
+                // セルの詳細ラベルに未設定を設定する。
                 cell.detailTextLabel?.text = "未設定"
             }
         
+        // 1行目の場合
         } else if indexPath.row == 1 {
+            // 退勤時間が入力済みの場合
             if timeRecord?.exitTime != "" {
+                // セルの詳細ラベルに退勤時間を設定する。
                 cell.detailTextLabel?.text = timeRecord?.exitTime
+                
+            // 退勤時間が未入力の場合
             } else {
+                // セルの詳細ラベルに未設定を設定する。
                 cell.detailTextLabel?.text = "未設定"
             }
         }
