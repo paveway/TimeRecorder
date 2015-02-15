@@ -19,12 +19,6 @@ import CoreData
 */
 class InputDateViewController: UIViewController {
     
-    /** コンテキスト(引き継ぎデータ) */
-    var managedObjectContext: NSManagedObjectContext? = nil
-    
-    /** 時間記録データ(引き継ぎデータ) */
-    var timeRecord: TimeRecord?
-    
     /** 日付選択 */
     @IBOutlet weak var datePicker: UIDatePicker!
     
@@ -82,6 +76,10 @@ class InputDateViewController: UIViewController {
         // 選択された日付を取得する。
         let date = getSelectedDate()
         
+        // コンテキストを取得する。
+        let appDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
+        let managedObjectContext = appDelegate.managedObjectContext
+        
         let fetchRequest = NSFetchRequest()
         fetchRequest.entity =
             NSEntityDescription.entityForName("TimeRecord", inManagedObjectContext: managedObjectContext!)
@@ -109,6 +107,10 @@ class InputDateViewController: UIViewController {
 
         // 選択された日付が存在しない場合
         if !isExistDate() {
+            // コンテキストを取得する。
+            let appDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
+            let managedObjectContext = appDelegate.managedObjectContext
+            
             // 時間記録オブジェクトを取得する。
             let timeRecord = NSEntityDescription.insertNewObjectForEntityForName("TimeRecord", inManagedObjectContext: managedObjectContext!) as NSManagedObject
             

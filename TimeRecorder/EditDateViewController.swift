@@ -84,7 +84,9 @@ class EditDateViewController: UIViewController {
         managedObjectContext?.deleteObject(timeRecord!)
         
         // 時間記録オブジェクトを取得する。
-        let newTimeRecord = NSEntityDescription.insertNewObjectForEntityForName("TimeRecord", inManagedObjectContext: managedObjectContext!) as NSManagedObject
+        let newTimeRecord =
+            NSEntityDescription.insertNewObjectForEntityForName(
+                "TimeRecord", inManagedObjectContext: managedObjectContext!) as NSManagedObject
             
         // 時間記録オブジェクトに新規データを設定する。
         let date = getSelectedDate()

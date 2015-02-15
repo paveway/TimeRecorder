@@ -21,6 +21,9 @@ class RecordListViewController: UITableViewController, NSFetchedResultsControlle
 
     /** コンテキスト */
     var managedObjectContext: NSManagedObjectContext? = nil
+    
+    /** アクセサリボタンインデックスパス */
+    var accessoryButtonIndexPath: NSIndexPath? = nil
 
     /**
     nibファイルロード後に呼び出される。
@@ -61,31 +64,48 @@ class RecordListViewController: UITableViewController, NSFetchedResultsControlle
         Log.d("OUT(OK)")
     }
     
+    /**
+    ビューが表示された時に呼び出される。
+    
+    :param: animated アニメーション有無の
+    */
+    override func viewDidAppear(animated: Bool) {
+        // アクセサリボタンのインデックスパスをクリアする。
+        accessoryButtonIndexPath = nil
+    }
+    
     // MARK: - Segues
 
+    /**
+    画面遷移する前に呼び出される。
+
+    :param: segue セグエ
+    :param: sender 引き継ぎデータ
+    */
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         Log.d("IN segue.identifier=[\(segue.identifier)]")
         
         // 詳細画面の場合
         if segue.identifier == "showRecordDetail" {
+            // 選択された行のインデックスパスが取得できた場合
             if let indexPath = self.tableView.indexPathForSelectedRow() {
+                // 対象行の時間記録データを取得する。
                 let timeRecord = self.fetchedResultsController.objectAtIndexPath(indexPath) as TimeRecord
+                
+                // 遷移先画面に時間記録データを設定する。
                 (segue.destinationViewController as RecordDetailViewController).timeRecord = timeRecord
             }
         
         // 日付入力画面の場合
         } else if segue.identifier == "showInputDate" {
-            (segue.destinationViewController as InputDateViewController).managedObjectContext = managedObjectContext
             
         // 日付編集画面の場合
         } else if segue.identifier == "showEditDate" {
-            let indexPath = self.tableView.indexPathForSelectedRow()
-            if indexPath != nil {
-                Log.d("indexPath.row=[\(indexPath!.row)]")
-                let timeRecord = self.fetchedResultsController.objectAtIndexPath(indexPath!) as TimeRecord
+            if accessoryButtonIndexPath != nil {
+                Log.d("accessoryButtonIndexPath.row=[\(accessoryButtonIndexPath!.row)]")
+                let timeRecord = self.fetchedResultsController.objectAtIndexPath(accessoryButtonIndexPath!) as TimeRecord
                 (segue.destinationViewController as EditDateViewController).timeRecord = timeRecord
             }
-            
         }
         
         Log.d("OUT(OK)")
@@ -163,6 +183,21 @@ class RecordListViewController: UITableViewController, NSFetchedResultsControlle
                 abort()
             }
         }
+        
+        Log.d("OUT(OK)")
+    }
+    
+    /**
+    アクセサリボタンがタップされた時に呼び出される。
+
+    :param: tableView テーブルビュー
+    :param: indexPath インデックスパス
+    */
+    override func tableView(tableView: UITableView, accessoryButtonTappedForRowWithIndexPath indexPath: NSIndexPath) {
+        Log.d("IN")
+        
+        // インデックスパスを保存する。
+        accessoryButtonIndexPath = indexPath
         
         Log.d("OUT(OK)")
     }
