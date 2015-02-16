@@ -8,20 +8,46 @@
 
 import Foundation
 
+/**
+ログユーティリティ
+
+:version: 1.0 新規作成
+:since: 1.0
+:author: mfuta1971@gmail.com
+*/
 class Log {
 
+    /** ログレベル列挙子 */
     enum LogLevel: Int {
+        /** 指定なし */
         case NONE
+        
+        /** デバッグ */
         case DEBUG
+        
+        /** インフォ */
         case INFO
+        
+        /** 警告 */
         case WARN
+        
+        /** エラー */
         case ERROR
     }
     
+    /** ログレベル */
     class var level: Int {
         return LogLevel.DEBUG.hashValue
     }
     
+    /**
+    デバッグレベルのログを出力する。
+
+    :param: message メッセージ
+    :param: function 関数名
+    :param: file ファイル名
+    :param: 行番号
+    */
     class func d(
         message: String,
         function: String = __FUNCTION__,
@@ -32,6 +58,14 @@ class Log {
             }
     }
     
+    /**
+    インフォレベルのログを出力する。
+    
+    :param: message メッセージ
+    :param: function 関数名
+    :param: file ファイル名
+    :param: 行番号
+    */
     class func i(
         message: String,
         function: String = __FUNCTION__,
@@ -42,6 +76,14 @@ class Log {
             }
     }
     
+    /**
+    インフォレベルのログを出力する。
+    
+    :param: message メッセージ
+    :param: function 関数名
+    :param: file ファイル名
+    :param: 行番号
+    */
     class func w(
         message: String,
         function: String = __FUNCTION__,
@@ -61,6 +103,8 @@ class Log {
                 Log.write("[ERROR]", message: message, function: function, file: file, line: line)
             }
     }
+    
+    // MARK: - Internal Method
     
     private class func write(
         logLevel: String,
