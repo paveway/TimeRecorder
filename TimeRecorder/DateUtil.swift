@@ -18,15 +18,39 @@ import Foundation
 */
 class DateUtil {
     
+    /** クラスプロパティ構造体 */
+    private struct ClassProperty {
+        /** 日付フォーマット */
+        static var dateFormat = "yyyy/MM/dd"
+        
+        /** 時間フォーマット */
+        static var timeFormat = "HH:mm"
+    }
+    
+    /** 日付フォーマット定数 */
+    class var DATE_FORMAT: String {
+        get {
+            return ClassProperty.dateFormat
+        }
+    }
+    
+    /** 時間フォーマット定数 */
+    class var TIME_FORMAT: String {
+        get {
+            return ClassProperty.timeFormat
+        }
+    }
+    
     /**
     年の数値を返却する。
 
     :param: date 年の数値を取得する日付
     :return: 年の数値
     */
-    class func year(date: NSDate) -> Int {
+    class func getYear(date: NSDate) -> Int {
         let calendar = NSCalendar.currentCalendar()
-        var comp: NSDateComponents = calendar.components(NSCalendarUnit.CalendarUnitYear, fromDate: date)
+        var comp: NSDateComponents =
+            calendar.components(NSCalendarUnit.CalendarUnitYear, fromDate: date)
         return comp.year
     }
     
@@ -36,9 +60,10 @@ class DateUtil {
     :param: date 月の数値を取得する日付
     :return: 月の数値
     */
-    class func month(date: NSDate) -> Int {
+    class func getMonth(date: NSDate) -> Int {
         let calendar = NSCalendar.currentCalendar()
-        var comp: NSDateComponents = calendar.components(NSCalendarUnit.CalendarUnitMonth, fromDate: date)
+        var comp: NSDateComponents =
+            calendar.components(NSCalendarUnit.CalendarUnitMonth, fromDate: date)
         return comp.month
     }
     
@@ -48,9 +73,10 @@ class DateUtil {
     :param: date 日の数値を取得する日付
     :return: 日の数値
     */
-    class func day(date: NSDate) -> Int {
+    class func getDay(date: NSDate) -> Int {
         let calendar = NSCalendar.currentCalendar()
-        var comp: NSDateComponents = calendar.components(NSCalendarUnit.CalendarUnitDay, fromDate: date)
+        var comp: NSDateComponents =
+            calendar.components(NSCalendarUnit.CalendarUnitDay, fromDate: date)
         return comp.day
     }
     
@@ -60,9 +86,10 @@ class DateUtil {
     :param: date 日の数値を取得する日付
     :return: 日の数値
     */
-    class func weekday(date: NSDate) -> Int {
+    class func getWeekday(date: NSDate) -> Int {
         let calendar = NSCalendar.currentCalendar()
-        var comp: NSDateComponents = calendar.components(NSCalendarUnit.CalendarUnitWeekday, fromDate: date)
+        var comp: NSDateComponents =
+            calendar.components(NSCalendarUnit.CalendarUnitWeekday, fromDate: date)
         return comp.weekday
     }
     
@@ -82,5 +109,41 @@ class DateUtil {
         var cal = NSCalendar.currentCalendar()
         var date = cal.dateFromComponents(comp)
         return date!
+    }
+    
+    /**
+    日付文字列を返却する。
+
+    :param: date 対象の日付オブジェクト
+    :return: 日付文字列
+    */
+    class func getDateString(date: NSDate) -> String {
+        Log.v("IN")
+        
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.locale = NSLocale(localeIdentifier: LocaleConstants.LOCALE)
+        dateFormatter.dateFormat = DATE_FORMAT
+        let result = dateFormatter.stringFromDate(date)
+        
+        Log.v("OUT(OK)")
+        return result
+    }
+    
+    /**
+    時間文字列を返却する。
+    
+    :param: date 対象の日付オブジェクト
+    :return: 時間文字列
+    */
+    class func getTimeString(date: NSDate) -> String {
+        Log.v("IN")
+        
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.locale = NSLocale(localeIdentifier: LocaleConstants.LOCALE)
+        dateFormatter.dateFormat = TIME_FORMAT
+        let result = dateFormatter.stringFromDate(date)
+        
+        Log.v("OUT(OK) result=[\(result)]")
+        return result
     }
 }

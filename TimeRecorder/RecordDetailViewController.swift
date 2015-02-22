@@ -16,7 +16,7 @@ import UIKit
 :since: 1.0
 :author: paveway.info@gmail.com
 */
-class RecordDetailViewController: UITableViewController {
+class RecordDetailViewController: BaseTableViewController {
 
     /** ラベル */
     let labels: Array<String> = ["出勤", "退勤"]
@@ -32,18 +32,6 @@ class RecordDetailViewController: UITableViewController {
       
         // スーパークラスのメソッドを呼び出す。
         super.viewDidLoad()
-        
-        Log.d("OUT(OUT)")
-    }
-
-    /**
-    メモリ不足の時に呼び出される。
-    */
-    override func didReceiveMemoryWarning() {
-        Log.d("IN")
-        
-        // スーパークラスのメソッドを呼び出す。
-        super.didReceiveMemoryWarning()
         
         Log.d("OUT(OUT)")
     }
@@ -119,7 +107,7 @@ class RecordDetailViewController: UITableViewController {
         Log.d("IN segue.identifier=[\(segue.identifier)]")
         
         // 時間入力画面の場合
-        if segue.identifier == "showInputTime" {
+        if segue.identifier == SegueConstants.SHOW_INPUT_TIME {
             // 選択された行のインデックスパスを取得する。
             if let indexPath = self.tableView.indexPathForSelectedRow() {
                 // 遷移先画面に引き継ぎデータを設定する。
@@ -153,11 +141,13 @@ class RecordDetailViewController: UITableViewController {
 
     :param: tableView テーブルビュー
     */
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(
+        tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         Log.d("IN")
         
         // セルを取得する。
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
+        let cell =
+            tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
         
         // セルのラベルをラベル名を設定する。
         cell.textLabel?.text = labels[indexPath.row]

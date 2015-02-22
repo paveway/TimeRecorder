@@ -53,7 +53,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <segue destination="1Df-Z4-myM" kind="show" identifier="showRecordDetail" id="oj1-0N-yKC"/>
-                                    <segue destination="eXj-mT-nH5" kind="show" identifier="showEditDate" trigger="accessoryAction" id="saq-x9-LRy"/>
+                                    <segue destination="eXj-mT-nH5" kind="show" identifier="showEditDate" trigger="accessoryAction" id="uoY-cA-eHk"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

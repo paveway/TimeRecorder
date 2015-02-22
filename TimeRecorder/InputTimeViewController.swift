@@ -16,7 +16,7 @@ import UIKit
 :since: 1.0
 :author: paveway.info@gmail.com
 */
-class InputTimeViewController: UIViewController {
+class InputTimeViewController: BaseViewController {
     
     /** 時間記録データ(引き継ぎデータ) */
     var timeRecord: TimeRecord?
@@ -50,18 +50,6 @@ class InputTimeViewController: UIViewController {
     }
     
     /**
-    メモリ不足の時に呼び出される。
-    */
-    override func didReceiveMemoryWarning() {
-        Log.d("IN")
-        
-        // スーパークラスのメソッドを呼び出す。
-        super.didReceiveMemoryWarning()
-        
-        Log.d("OUT(OK)")
-    }
-    
-    /**
     時間記録データを保存する。
 
     :param: sender バーボタンアイテム
@@ -70,7 +58,7 @@ class InputTimeViewController: UIViewController {
         Log.d("IN")
       
         // 選択された時間を取得する。
-        let time = getSelectedTime(timePicker.date)
+        let time = DateUtil.getTimeString(timePicker.date)
         
         // 時間タイプにより選択された時間を設定する。
         timeType == 0 ? (timeRecord?.enterTime = time) : (timeRecord?.exitTime = time)
@@ -78,24 +66,9 @@ class InputTimeViewController: UIViewController {
         // 時間記録データを更新する。
         self.timeRecord?.managedObjectContext!.save(nil)
         
+        // 詳細画面に戻る。
+        self.navigationController?.popViewControllerAnimated(true)
+        
         Log.d("OUT(OK)")
-    }
-    
-    /**
-    選択された時間文字列を返却する。
-
-    :param: date 時間オブジェクト
-    :return: 選択された時間文字列
-    */
-    func getSelectedTime(date: NSDate) -> String {
-        Log.d("IN")
-        
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.locale = NSLocale(localeIdentifier: "ja_JP")
-        dateFormatter.dateFormat = "HH:mm"
-        let result = dateFormatter.stringFromDate(date)
-        
-        Log.d("OUT(OK) result=[\(result)]")
-        return result
     }
 }

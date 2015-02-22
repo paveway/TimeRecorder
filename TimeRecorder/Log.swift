@@ -22,6 +22,9 @@ class Log {
         /** 指定なし */
         case NONE
         
+        /** 詳細 */
+        case VERBOSE
+        
         /** デバッグ */
         case DEBUG
         
@@ -38,6 +41,24 @@ class Log {
     /** ログレベル */
     class var level: Int {
         return LogLevel.DEBUG.hashValue
+    }
+    
+    /**
+    詳細レベルのログを出力する。
+    
+    :param: message メッセージ
+    :param: function 関数名
+    :param: file ファイル名
+    :param: 行番号
+    */
+    class func v(
+        message: String,
+        function: String = __FUNCTION__,
+        file: String = __FILE__,
+        line: Int = __LINE__) {
+            if level >= LogLevel.VERBOSE.hashValue {
+                Log.write("[VERBOSE]", message: message, function: function, file: file, line: line)
+            }
     }
     
     /**
@@ -77,7 +98,7 @@ class Log {
     }
     
     /**
-    インフォレベルのログを出力する。
+    警告レベルのログを出力する。
     
     :param: message メッセージ
     :param: function 関数名
@@ -94,6 +115,14 @@ class Log {
             }
     }
     
+    /**
+    エラーレベルのログを出力する。
+    
+    :param: message メッセージ
+    :param: function 関数名
+    :param: file ファイル名
+    :param: 行番号
+    */
     class func e(
         message: String,
         function: String = __FUNCTION__,
@@ -106,6 +135,15 @@ class Log {
     
     // MARK: - Internal Method
     
+    /**
+    ログを出力する。
+    
+    :param: logLevel ログレベル
+    :param: message メッセージ
+    :param: function 関数名
+    :param: file ファイル名
+    :param: 行番号
+    */
     private class func write(
         logLevel: String,
         message: String,
@@ -114,7 +152,7 @@ class Log {
         line: Int) {
 
         let dateFormatter = NSDateFormatter()
-        dateFormatter.locale = NSLocale(localeIdentifier: "ja_JP")
+        dateFormatter.locale = NSLocale(localeIdentifier: LocaleConstants.LOCALE)
         dateFormatter.timeStyle = .MediumStyle
         dateFormatter.dateStyle = .MediumStyle
         var dateStr = dateFormatter.stringFromDate(NSDate())
