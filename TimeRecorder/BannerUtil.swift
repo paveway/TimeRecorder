@@ -78,12 +78,11 @@ class BannerUtil {
     class func createBannerViewForTableView(
         viewController: UIViewController, delegate: GADBannerViewDelegate) -> GADBannerView {
         Log.v("IN")
-            
-        // バナービューを生成する。
-        var bannerView = GADBannerView()
+
         
-        // サイズを設定する。
-        bannerView = GADBannerView(adSize: kGADAdSizeBanner)
+        // サイズを指定してバナービューを生成する。
+        let adSize: GADAdSize = GADAdSizeFullWidthPortraitWithHeight(kGADAdSizeBanner.size.height as CGFloat)
+        var bannerView = GADBannerView(adSize: adSize)
             
         // ADユニットIDを設定する。
         bannerView.adUnitID = BannerUtil.AD_UNIT_ID
